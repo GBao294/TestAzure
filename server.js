@@ -14,9 +14,7 @@ const Emitter = require('events')
 const MongoStore = require('connect-mongo')(session);
 
 // Database connection
-console.log('Cookie Secret:', process.env.COOKIE_SECRET);
-const dbURI = process.env.MONGO_CONNECTION_URL;
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 // connection.once('open', () => {
 //     console.log('Database connected...');
