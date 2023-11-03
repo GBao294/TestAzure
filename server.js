@@ -13,19 +13,11 @@ const passport = require('passport')
 const Emitter = require('events')
 const MongoStore = require('connect-mongo')(session);
 
-// Database connection
-console.log('Cookie Secret:', process.env.COOKIE_SECRET);
-const dbURI = process.env.MONGO_CONNECTION_URL || 'mongodb://pizzabb-server:shv4MpaC33gU73SMMC9UEkPULkqSYhtOHLpiG2TDJ9dCNf0m23KXMbPUIY61PeV8IAFloSkZhWMwACDbgXT9aA==@pizzabb-server.mongo.cosmos.azure.com:10255/pizzabb-database?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@pizzabb-server@';
-console.log('DB URI:', dbURI);
-// mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex:true, useUnifiedTopology: true, useFindAndModify : true });
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
-const connection = mongoose.connection;
-// connection.once('open', () => {
-//     console.log('Database connected...');
-// }).catch(err => {
-//     console.log('Connection failed...')
-// });
-
+const Database= process.env.Database || "pizzacome" ;
+return {
+	Database_URL : process.env.Database_URL
+	Database : process.env.Database
+}
 connection.once('open', () => {
     console.log('Database connected...');
 });
